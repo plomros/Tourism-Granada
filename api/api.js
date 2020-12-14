@@ -34,6 +34,9 @@ module.exports = (req, res) => {
 		else
 			array = restaurantes
 
+		if(nSitios > array.length)
+			nSitios = array.length
+
 		for (let i=0; i < nSitios; i++) {
 			random = Math.floor(Math.random() * array.length)
 			total.push(array[random])
