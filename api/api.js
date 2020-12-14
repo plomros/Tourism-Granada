@@ -33,10 +33,13 @@ module.exports = (req, res) => {
 		let cad = ""
 		total.forEach((elemento) => cad += elemento + ", ")
 
-		return res.send(req.queryResult.parameters.pais + " funcionaaaaaaaaa")
+		let bodyString = request.body;
+		var entradaDialogFlow = JSON.parse(bodyString);
+		var pais=entradaDialogFlow['queryResult']['parameters'].pais;
+		return res.send({fulfillmentText: pais + " funcionaaaaaaaaa"})
 	}
 	catch (err) {
-		return res.send("Ha habido algun error")
+		return res.send({fulfillmentText: "Ha habido algun error"})
 	}
 
 }
