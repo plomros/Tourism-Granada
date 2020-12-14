@@ -1,18 +1,6 @@
 
 module.exports = (req, res) => {
 
-	function elegirNMonumentos(monumentos, nMonumentos) {
-		let total = []
-		let random = 0
-		for (let i=0; i < nMonumentos; i++) {
-			random = Math.floor(Math.random() * monumentos.length)
-			total.push(monumentos[random])
-			monumentos.splice(random, 1)
-		}
-		return total
-	}
-
-
 	let monumentos = ["Alhambra",
 	"Palacio CarlosV",
 	"Catedral",
@@ -25,11 +13,40 @@ module.exports = (req, res) => {
 	"Sacromonte",
 	"Capilla Real"]
 
+	let restaurantes = [
+		"El peruano",
+		"Biggies",
+		"Aliatar",
+		"El poderio",
+		"Los Diamantes",
+		"La esquinita de Javi",
+		"El pescaito de Carmela",
+		"Palacio Los patos"]
+
+
+	function elegirNSitios(tipo, nSitios) {
+		let total = []
+		let random = 0
+		let array = []
+
+		if(tipo == "monumentos")
+			array = monumentos
+		else
+			array = restaurantes
+
+		for (let i=0; i < nSitios; i++) {
+			random = Math.floor(Math.random() * array.length)
+			total.push(array[random])
+			array.splice(random, 1)
+		}
+		return total
+	}
+
 	try {
 		let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+		let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 		let nSitios = parseInt(sitios)
-
-		let total = elegirNMonumentos(monumentos, nSitios)
+		let total = elegirNSitios(tipo, array, nSitios)
 
 		let cad = "La ruta creada es: \n"
 		total.forEach((elemento) => cad += elemento + ", ")
