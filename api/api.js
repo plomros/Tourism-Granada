@@ -26,51 +26,19 @@ module.exports = (req, res) => {
 	"Capilla Real"]
 
 	try {
-		// let nSitios = req.queryResult.parameters.pais//.CantidadSitios
+		// let nSitios = req.queryResult.parameters.pais.CantidadSitios
 		//
 		// let total = elegirNMonumentos(monumentos, nSitios)
 		//
 		// let cad = ""
 		// total.forEach((elemento) => cad += elemento + ", ")
 
-		let bodyString = req.body;
-		var entradaDialogFlow = (bodyString);
-		var pais=entradaDialogFlow['queryResult']['parameters'].pais;
+		let pais = req.queryResult.parameters.pais
 		let salida = pais + " funcionaaaaaaaaa"
-			return res.send({fulfillmentText: salida})
+		return res.send({fulfillmentText: salida})
 	}
 	catch (err) {
 		return res.send({fulfillmentText: "Ha habido algun error" + err})
 	}
 
 }
-
-
-/*
-export default (request, response) => {
-    let bodyString = request.body;
-    var entradaDialogFlow = JSON.parse(bodyString);
-    console.log("Entrada DialogFlow: "+entradaDialogFlow);
-    var pais=entradaDialogFlow['queryResult']['parameters'].pais;
-
-
-    var capital="Madrid";
-
-
-    let respuesta = "La capital de "+pais+" es "+capital;
-
-    // Set the status code - by default it would return 200
-    response.status = 200;
-
-    // Set the headers the way you like
-    response.headers['X-Custom-Header'] = 'CustomHeaderValue';
-    return request.json().then((body) => {
-    return response.send({ fulfillmentText: respuesta });
-    //return response.send({speech: "What's up cool developer :)"});
-
-}).catch((err) => {
-return response.send("Malformed JSON body.");
-});
-};
-
-*/
