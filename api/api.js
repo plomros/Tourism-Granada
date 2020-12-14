@@ -26,7 +26,8 @@ module.exports = (req, res) => {
 	"Capilla Real"]
 
 	try {
-		let nSitios = parseInt(JSON.stringify(req.body.queryResult.outputContexts[0].parameters.CantidadSitios))
+		let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+		let nSitios = parseInt(sitios)
 
 		let total = elegirNMonumentos(monumentos, nSitios)
 
