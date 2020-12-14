@@ -25,14 +25,19 @@ module.exports = (req, res) => {
 	"Sacromonte",
 	"Capilla Real"]
 
-	let nSitios = req.queryResult.outputContext[0].CantidadSitios
+	try {
+		let nSitios = req.queryResult.outputContext[0].CantidadSitios
 
-	let total = elegirNMonumentos(monumentos, nSitios)
+		let total = elegirNMonumentos(monumentos, nSitios)
 
-	let cad = ""
-	total.forEach((elemento) => cad += elemento + ", ")
+		let cad = ""
+		total.forEach((elemento) => cad += elemento + ", ")
 
-	res.send(cad)
+		return res.send(cad)
+	}
+	catch (err) {
+		return res.send("Ha habido algun error")
+	}
 
 }
 
