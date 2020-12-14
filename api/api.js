@@ -33,7 +33,7 @@ module.exports = (req, res) => {
 		let cad = ""
 		total.forEach((elemento) => cad += elemento + ", ")
 
-		return res.send(req.queryResult.outputContexts[0].parameters.pais + " funcionaaaaaaaaa")
+		return res.send(req.queryResult.parameters.pais + " funcionaaaaaaaaa")
 	}
 	catch (err) {
 		return res.send("Ha habido algun error")
