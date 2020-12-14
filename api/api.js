@@ -26,19 +26,17 @@ module.exports = (req, res) => {
 	"Capilla Real"]
 
 	try {
-		// let nSitios = req.queryResult.parameters.pais.CantidadSitios
-		//
-		// let total = elegirNMonumentos(monumentos, nSitios)
-		//
-		// let cad = ""
-		// total.forEach((elemento) => cad += elemento + ", ")
+		let nSitios = req.body.queryResult.parameters.CantidadSitios
 
-		let pais = req.body.queryResult.parameters.pais
-		let salida = pais + " funcionaaaaaaaaa"
-		return res.send({fulfillmentText: salida})
+		let total = elegirNMonumentos(monumentos, nSitios)
+
+		let cad = "La cruta creada es: \n"
+		total.forEach((elemento) => cad += elemento + ", ")
+
+		return res.send({fulfillmentText: total})
 	}
 	catch (err) {
-		return res.send({fulfillmentText: "Ha habido algun error" + err})
+		return res.send({fulfillmentText: "Ha habido algun error: " + err})
 	}
 
 }
