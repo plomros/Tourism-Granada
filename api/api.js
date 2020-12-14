@@ -26,12 +26,12 @@ module.exports = (req, res) => {
 	"Capilla Real"]
 
 	try {
-		let nSitios = req.queryResult.parameters.pais//.CantidadSitios
-
-		let total = elegirNMonumentos(monumentos, nSitios)
-
-		let cad = ""
-		total.forEach((elemento) => cad += elemento + ", ")
+		// let nSitios = req.queryResult.parameters.pais//.CantidadSitios
+		//
+		// let total = elegirNMonumentos(monumentos, nSitios)
+		//
+		// let cad = ""
+		// total.forEach((elemento) => cad += elemento + ", ")
 
 		let bodyString = req.body;
 		var entradaDialogFlow = JSON.parse(bodyString);
