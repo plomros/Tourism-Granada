@@ -26,7 +26,7 @@ module.exports = (req, res) => {
 	"Capilla Real"]
 
 	try {
-		let nSitios = req.queryResult.outputContext[0].CantidadSitios
+		let nSitios = req.queryResult.outputContexts[0].CantidadSitios
 
 		let total = elegirNMonumentos(monumentos, nSitios)
 
