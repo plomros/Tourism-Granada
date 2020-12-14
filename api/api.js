@@ -36,7 +36,10 @@ module.exports = (req, res) => {
 		let bodyString = req.body;
 		var entradaDialogFlow = JSON.parse(bodyString);
 		var pais=entradaDialogFlow['queryResult']['parameters'].pais;
-		return res.send({fulfillmentText: pais + " funcionaaaaaaaaa"})
+		let salida = pais + " funcionaaaaaaaaa"
+		return res.json().then((body) => {
+			return res.send({fulfillmentText: salida})
+		});
 	}
 	catch (err) {
 		return res.send({fulfillmentText: "Ha habido algun error"})
