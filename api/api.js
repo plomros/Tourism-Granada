@@ -46,7 +46,7 @@ module.exports = (req, res) => {
 		let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 		let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 		let nSitios = parseInt(sitios)
-		let total = elegirNSitios(tipo, array, nSitios)
+		let total = elegirNSitios(tipo, nSitios)
 
 		let cad = "La ruta creada es: \n"
 		total.forEach((elemento) => cad += elemento + ", ")
