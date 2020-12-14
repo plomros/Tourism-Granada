@@ -29,11 +29,11 @@ module.exports = (req, res) => {
 		// let nSitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 		//
 		// let total = elegirNMonumentos(monumentos, nSitios)
+		//
+		// let cad = "La ruta creada es: \n"
+		// total.forEach((elemento) => cad += elemento + ", ")
 
-		let cad = "La ruta creada es: \n"
-		total.forEach((elemento) => cad += elemento + ", ")
-
-		return res.send({fulfillmentText: total})
+		return res.send({fulfillmentText: req.body.queryResult.outputContexts})
 	}
 	catch (err) {
 		return res.send({fulfillmentText: "Ha habido algun error: " + err})
