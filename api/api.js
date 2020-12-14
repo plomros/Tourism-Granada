@@ -33,7 +33,7 @@ module.exports = (req, res) => {
 		// let cad = ""
 		// total.forEach((elemento) => cad += elemento + ", ")
 
-		let pais = req.queryResult.parameters.pais
+		let pais = req.body.queryResult.parameters.pais
 		let salida = pais + " funcionaaaaaaaaa"
 		return res.send({fulfillmentText: salida})
 	}
