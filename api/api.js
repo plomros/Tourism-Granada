@@ -26,11 +26,11 @@ module.exports = (req, res) => {
 	"Capilla Real"]
 
 	try {
-		let nSitios = req.body.queryResult.parameters.CantidadSitios
+		let nSitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 
 		let total = elegirNMonumentos(monumentos, nSitios)
 
-		let cad = "La cruta creada es: \n"
+		let cad = "La ruta creada es: \n"
 		total.forEach((elemento) => cad += elemento + ", ")
 
 		return res.send({fulfillmentText: total})
@@ -40,3 +40,13 @@ module.exports = (req, res) => {
 	}
 
 }
+
+
+/*
+	switch (req.) {
+		case CantidadSitios:
+
+		break;
+}
+
+*/
