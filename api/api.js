@@ -42,7 +42,7 @@ module.exports = (req, res) => {
 		});
 	}
 	catch (err) {
-		return res.send({fulfillmentText: "Ha habido algun error"})
+		return res.send({fulfillmentText: "Ha habido algun error" + err})
 	}
 
 }
