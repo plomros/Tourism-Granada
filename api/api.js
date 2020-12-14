@@ -33,7 +33,7 @@ module.exports = (req, res) => {
 		// let cad = "La ruta creada es: \n"
 		// total.forEach((elemento) => cad += elemento + ", ")
 
-		return res.send({fulfillmentText: JSON.stringify(req.body.queryResult.outputContexts)})
+		return res.send({fulfillmentText: JSON.stringify(req.body.queryResult.outputContexts[0].parameters)})
 	}
 	catch (err) {
 		return res.send({fulfillmentText: "Ha habido algun error: " + err})
