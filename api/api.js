@@ -28,12 +28,12 @@ module.exports = (req, res) => {
 	try {
 		let nSitios = parseInt(JSON.stringify(req.body.queryResult.outputContexts[0].parameters.CantidadSitios))
 
-		let total = elegirNMonumentos(monumentos, nSitios)
+		// let total = elegirNMonumentos(monumentos, nSitios)
+		//
+		// let cad = "La ruta creada es: \n"
+		// total.forEach((elemento) => cad += elemento + ", ")
 
-		let cad = "La ruta creada es: \n"
-		total.forEach((elemento) => cad += elemento + ", ")
-
-		return res.send({fulfillmentText: total})
+		return res.send({fulfillmentText: nSitios})
 	}
 	catch (err) {
 		return res.send({fulfillmentText: "Ha habido algun error: " + err})
