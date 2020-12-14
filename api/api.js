@@ -26,14 +26,14 @@ module.exports = (req, res) => {
 	"Capilla Real"]
 
 	try {
-		let nSitios = req.queryResult.outputContexts[0].CantidadSitios
+		let nSitios = req.queryResult.outputContexts[0].parameters.CantidadSitios
 
 		let total = elegirNMonumentos(monumentos, nSitios)
 
 		let cad = ""
 		total.forEach((elemento) => cad += elemento + ", ")
 
-		return res.send(cad)
+		return res.send(req.queryResult.outputContexts[0].parameters.pais + " funcionaaaaaaaaa")
 	}
 	catch (err) {
 		return res.send("Ha habido algun error")
