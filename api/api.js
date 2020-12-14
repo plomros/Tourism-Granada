@@ -34,7 +34,7 @@ module.exports = (req, res) => {
 		// total.forEach((elemento) => cad += elemento + ", ")
 
 		let bodyString = req.body;
-		var entradaDialogFlow = JSON.parse(bodyString);
+		var entradaDialogFlow = (bodyString);
 		var pais=entradaDialogFlow['queryResult']['parameters'].pais;
 		let salida = pais + " funcionaaaaaaaaa"
 		return res.json().then((body) => {
