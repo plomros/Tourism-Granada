@@ -125,7 +125,6 @@ try {
 						cad += total[i] + " y ";
 					else
 						cad += total[i] + ", ";
-
 				}
 
 				return res.send({fulfillmentText: cad})
@@ -162,7 +161,7 @@ try {
 					let total = elegirNSitios("monumentos", rand)
 
 					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
-					+ rand + " - "+ total.length + " - " + monumentos.length
+					+ total[0]
 
 					return res.send({fulfillmentText: cad})
 				}
