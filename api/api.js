@@ -157,7 +157,7 @@ try {
 					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
 					+ total[0]
 
-					return res.send({fulfillmentText: monumentos})
+					return res.send({fulfillmentText: cad})
 				}
 				catch (err) {
 					return res.send({fulfillmentText: "Ha habido algun error: " + err})
