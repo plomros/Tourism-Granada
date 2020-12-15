@@ -83,7 +83,7 @@ try {
 						cad += total[i] + ", ";
 				}
 
-				ultimoLugarVisitado = total[total.length-1]
+				ultimoLugarVisitado = total[nSitiosVisitados-1]
 
 
 				return res.send({fulfillmentText: cad})
