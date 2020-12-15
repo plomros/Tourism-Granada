@@ -3,6 +3,7 @@ module.exports = (req, res) => {
 
 	let datos = require("./data.json")
 	let monumentos = datos.monumentos
+						return res.send({fulfillmentText: monumentos})
 	let restaurantes = datos.restaurantes
 
 	function elegirNSitios(tipo, nSitios) {
