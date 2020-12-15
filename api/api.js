@@ -19,7 +19,7 @@ function elegirNSitios(tipo, nSitios) {
 			nSitios = array.length
 
 		for (let i=0; i < nSitios; i++) {
-			random = Math.floor(Math.random() * array.length)
+			random = generarEntero(0, array.length)
 			total.push(array[random])
 			array.splice(random, 1)
 		}
@@ -28,6 +28,10 @@ function elegirNSitios(tipo, nSitios) {
 	catch (err) {
 		return res.send({fulfillmentText: "Ha habido algun error: " + err})
 	}
+}
+
+function generarEntero(min, max) {
+	return Math.floor(Math.random() * (max - min)) + min;
 }
 /******************************************************************************/
 /******************************************************************************/
@@ -65,7 +69,7 @@ try {
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 				let nSitios = parseInt(sitios)
 				let total = elegirNSitios(tipo, nSitios)
-				let nSitiosVisitados = Math.floor(Math.random() * total.length-1) + 1
+				let nSitiosVisitados = generarEntero(1, total.length)
 
 				let cad = "Por ahora se han visitado los lugares: \n"
 
@@ -89,8 +93,8 @@ try {
 		case "consultaKilometrosPorRecorrer":
 			try {
 				let MARGEN = 20
-				let km = Math.floor(Math.random() * MARGEN-1) + 1
-				let kmFaltantes = Math.floor(Math.random() * MARGEN-1) + 1
+				let km = generarEntero(1, MARGEN)
+				let kmFaltantes = generarEntero(1, MARGEN)
 
 				let cad = "Llevas andados " + km + " km y quedan todavia "
 				+ kmFaltantes + " km por andar"
@@ -110,7 +114,7 @@ try {
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 				let nSitios = parseInt(sitios)
 				let total = elegirNSitios(tipo, nSitios)
-				let nSitiosVisitados = Math.floor(Math.random() * total.length-1) + 1
+				let nSitiosVisitados = generarEntero(1, total.length)
 
 				let cad = "Quedan por visitar: \n"
 
@@ -152,7 +156,7 @@ try {
 /******************************************************************************/
 			case "recomendacionLugarCercano":
 				try {
-					let rand = Math.floor(Math.random() * monumentos.length-1) + 1
+					let rand = generarEntero(1, monumentos.length);
 					let total = elegirNSitios("monumentos", rand)
 
 					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
