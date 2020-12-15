@@ -155,7 +155,7 @@ try {
 					let total = elegirNSitios("monumentos", Math.floor(Math.random() * monumentos.length-1) + 1)
 
 					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
-					+ total[0]
+					+ total.length
 
 					return res.send({fulfillmentText: cad})
 				}
