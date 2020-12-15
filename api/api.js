@@ -65,7 +65,7 @@ try {
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 				let nSitios = parseInt(sitios)
 				let total = elegirNSitios(tipo, nSitios)
-				let nSitiosVisitados = Math.floor(Math.random() * total.length)
+				let nSitiosVisitados = Math.floor(Math.random() * total.length-1) + 1
 
 				let cad = "Por ahora se han visitado los lugares: \n"
 
@@ -89,8 +89,8 @@ try {
 		case "consultaKilometrosPorRecorrer":
 			try {
 				let MARGEN = 20
-				let km = Math.floor(Math.random() * MARGEN)
-				let kmFaltantes = Math.floor(Math.random() * MARGEN)
+				let km = Math.floor(Math.random() * MARGEN-1) + 1
+				let kmFaltantes = Math.floor(Math.random() * MARGEN-1) + 1
 
 				let cad = "Llevas andados " + km + " km y quedan todavia "
 				+ kmFaltantes + " km por andar"
@@ -110,7 +110,7 @@ try {
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 				let nSitios = parseInt(sitios)
 				let total = elegirNSitios(tipo, nSitios)
-				let nSitiosVisitados = Math.floor(Math.random() * total.length)
+				let nSitiosVisitados = Math.floor(Math.random() * total.length-1) + 1
 
 				let cad = "Quedan por visitar: \n"
 
@@ -152,10 +152,10 @@ try {
 /******************************************************************************/
 			case "recomendacionLugarCercano":
 				try {
-					let total = elegirNSitios("monumentos", Math.floor(Math.random() * monumentos.length))
+					let total = elegirNSitios("monumentos", Math.floor(Math.random() * monumentos.length-1) + 1)
 
 					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
-					+ total.length
+					+ total[0]
 
 					return res.send({fulfillmentText: cad})
 				}
