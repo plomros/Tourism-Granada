@@ -98,7 +98,7 @@ try {
 				let km = Math.floor(Math.random() * MARGEN)
 				let kmFaltantes = Math.floor(Math.random() * MARGEN)
 
-				let cad = "Llevas andados " + km + " km de los cuales quedan todavia "
+				let cad = "Llevas andados " + km + " km y quedan todavia "
 				+ kmFaltantes + " km por andar"
 
 				return res.send({fulfillmentText: cad})
@@ -106,6 +106,31 @@ try {
 			catch (err) {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
+		break;
+
+		case "consultaLugaresPorVisitar":
+		try {
+			let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+			let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
+			let nSitios = parseInt(sitios)
+			let total = elegirNSitios(tipo, nSitios)
+			let nSitiosVisitados = Math.floor(Math.random() * total.length)
+
+			let cad = "Quedan por visitar: \n"
+
+			for (let i=0; i < nSitiosVisitados; i++) {
+				if(i+1 == nSitiosVisitados)
+					cad += total[i] + " y ";
+				else
+					cad += total[i] + ", ";
+
+			}
+
+			return res.send({fulfillmentText: cad})
+		}
+		catch (err) {
+			return res.send({fulfillmentText: "Ha habido algun error: " + err})
+		}
 		break;
 
 		default:
