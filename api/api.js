@@ -49,11 +49,12 @@ module.exports = (req, res) => {
 /******************************************************************************/
 try {
 	let query = req.body.queryResult.intent.displayName
-	return res.send({fulfillmentText: query})
 
 	switch (query) {
 		case "consultaSiguienteSitio":
 			try {
+				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 				let nSitios = parseInt(sitios)
 				let total = elegirNSitios(tipo, nSitios)
 
