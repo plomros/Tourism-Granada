@@ -8,14 +8,13 @@ function elegirNSitios(tipo, nSitios) {
 	try{
 		let total = []
 		let random = 0
-		let array = [], aux = []
+		let array = []
 
 		if(tipo == "monumentos")
-			array = monumentos
+			for (let i=0; i < nSitios; i++)
+				array.push(monumentos[i])
 		else
-			array = restaurantes
-
-		aux = array
+			array.push(restaurantes[i])
 
 		if(nSitios > array.length)
 			nSitios = array.length
@@ -25,7 +24,7 @@ function elegirNSitios(tipo, nSitios) {
 			total.push(array[random])
 			array.splice(random, 1)
 		}
-		array = aux
+
 		return total
 	}
 	catch (err) {
