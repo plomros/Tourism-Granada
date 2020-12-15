@@ -12,14 +12,23 @@ function elegirNSitios(tipo, nSitios) {
 		let random = 0
 		let array = []
 
-		if(tipo == "monumentos")
+		if(tipo == "monumentos") {
+			if(nSitios > array.length)
+				nSitios = monumentos.length
+
 			for (let i=0; i < nSitios; i++)
 				array.push(monumentos[i])
-		else
-			array.push(restaurantes[i])
+		}
 
-		if(nSitios > array.length)
-			nSitios = array.length
+		else {
+			if(nSitios > array.length)
+				nSitios = restaurantes.length
+
+			for (let i=0; i < nSitios; i++)
+				array.push(restaurantes[i])
+		}
+
+
 
 		for (let i=0; i < nSitios; i++) {
 			random = generarEntero(0, array.length)
