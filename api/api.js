@@ -51,7 +51,7 @@ try {
 	let query = req.body.queryResult.intent.displayName
 
 	switch (query) {
-		default://case "consultaSiguienteSitio":
+		case consultaSiguienteSitio:
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
@@ -65,23 +65,23 @@ try {
 			catch (err) {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
-		// break;
+		break;
 
-		// default:
-		// 	try {
-		// 		let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
-		// 		let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
-		// 		let nSitios = parseInt(sitios)
-		// 		let total = elegirNSitios(tipo, nSitios)
-		//
-		// 		let cad = "La ruta creada es: \n"
-		// 		total.forEach((elemento) => cad += elemento + ", ")
-		//
-		// 		return res.send({fulfillmentText: cad})
-		// 	}
-		// 	catch (err) {
-		// 		return res.send({fulfillmentText: "Ha habido algun error: " + err})
-		// 	}
+		default:
+			try {
+				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
+				let nSitios = parseInt(sitios)
+				let total = elegirNSitios(tipo, nSitios)
+
+				let cad = "La ruta creada es: \n"
+				total.forEach((elemento) => cad += elemento + ", ")
+
+				return res.send({fulfillmentText: cad})
+			}
+			catch (err) {
+				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+			}
 		}
 	}
 	catch (err) {
