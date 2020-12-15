@@ -82,6 +82,7 @@ try {
 			}
 		}
 	}
-	catch (err)
+	catch (err) {
 		return res.send({fulfillmentText: "Ha habido algun error: " + err})
+	}
 }
