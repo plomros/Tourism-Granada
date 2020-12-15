@@ -49,6 +49,7 @@ module.exports = (req, res) => {
 /******************************************************************************/
 try {
 	let query = req.body.queryResult.intent.displayName
+	return res.send({fulfillmentText: query})
 
 	switch (query) {
 		case "consultaSiguienteSitio":
