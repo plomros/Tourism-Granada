@@ -141,6 +141,7 @@ try {
 				let total = elegirNSitios(tipo, nSitios)
 
 				let cad = "La ruta creada es: \n"
+				ruta = []
 				total.forEach((elemento) => {
 					cad += elemento + ", "
 					ruta.push(elemento)
