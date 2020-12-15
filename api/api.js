@@ -50,8 +50,7 @@ module.exports = (req, res) => {
 try {
 	let query = req.body.queryResult.intent.displayName
 
-	switch (query) {
-		case consultaSiguienteSitio:
+	if(query == "consultaSiguienteSitio") {
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
@@ -65,9 +64,9 @@ try {
 			catch (err) {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
-		break;
+		}
 
-		default:
+		else {
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
