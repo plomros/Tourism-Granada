@@ -143,7 +143,7 @@ try {
 /******************************************************************************/
 /******************************************************************************/
 /******************************************************************************/
-		default:
+		case "generarRecorrido":
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
@@ -158,6 +158,7 @@ try {
 			catch (err) {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
+			break;
 		}
 	}
 	catch (err) {
