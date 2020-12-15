@@ -2,6 +2,7 @@
 const datos = require("./data.json")
 const monumentos = datos.monumentos
 const restaurantes = datos.restaurantes
+let ultimoLugarVisitado = ""
 
 
 function elegirNSitios(tipo, nSitios) {
@@ -33,7 +34,7 @@ function elegirNSitios(tipo, nSitios) {
 }
 
 function generarEntero(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+	return Math.floor(Math.random() * (max - min)) + min;
 }
 /******************************************************************************/
 /******************************************************************************/
@@ -80,8 +81,10 @@ try {
 						cad += total[i] + " y ";
 					else
 						cad += total[i] + ", ";
-
 				}
+
+				ultimoLugarVisitado = total[total.length-1]
+
 
 				return res.send({fulfillmentText: cad})
 			}
@@ -126,6 +129,8 @@ try {
 					else
 						cad += total[i] + ", ";
 				}
+
+				cad += " y el siguiente sitio es " + ultimoLugarVisitado
 
 				return res.send({fulfillmentText: cad})
 			}
