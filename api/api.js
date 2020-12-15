@@ -77,8 +77,29 @@ try {
 
 				let cad = "Por ahora se han visitado los lugares: \n"
 
-				for (let i=0; i < nSitiosVisitados; i++)
-					cad += total[i] + ", ";
+				for (let i=0; i < nSitiosVisitados; i++) {
+					if(i+1 == nSitiosVisitados)
+						cad += total[i] + " y ";
+					else
+						cad += total[i] + ", ";
+
+				}
+
+				return res.send({fulfillmentText: cad})
+			}
+			catch (err) {
+				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+			}
+		break;
+
+		case "consultaKilometrosPorRecorrer":
+			try {
+				let MARGEN = 20
+				let km = Math.floor(Math.random() * MARGEN)
+				let kmFaltantes = Math.floor(Math.random() * MARGEN)
+
+				let cad = "Llevas andados " + km + " km de los cuales quedan todavia "
+				+ kmFaltantes + " km por andar"
 
 				return res.send({fulfillmentText: cad})
 			}
