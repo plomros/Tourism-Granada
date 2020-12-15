@@ -159,6 +159,23 @@ try {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
 			break;
+
+			case "recomendacionLugarCercano":
+				try {
+					let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+					let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
+					let nSitios = parseInt(sitios)
+					let total = elegirNSitios(tipo, nSitios)
+
+					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
+					+ total[0]
+
+					return res.send({fulfillmentText: cad})
+				}
+				catch (err) {
+					return res.send({fulfillmentText: "Ha habido algun error: " + err})
+				}
+				break;
 		}
 	}
 	catch (err) {
