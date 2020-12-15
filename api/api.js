@@ -1,39 +1,40 @@
 
+const datos = require("./data.json")
+const monumentos = datos.monumentos
+const restaurantes = datos.restaurantes
+
+
+function elegirNSitios(tipo, nSitios) {
+	try{
+		let total = []
+		let random = 0
+		let array = []
+
+		if(tipo == "monumentos")
+			array = monumentos
+		else
+			array = restaurantes
+
+		if(nSitios > array.length)
+			nSitios = array.length
+
+		for (let i=0; i < nSitios; i++) {
+			random = Math.floor(Math.random() * array.length)
+			total.push(array[random])
+			array.splice(random, 1)
+		}
+		return total
+	}
+	catch (err) {
+		return res.send({fulfillmentText: "Ha habido algun error: " + err})
+	}
+}
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+
 module.exports = (req, res) => {
 
-	let datos = require("./data.json")
-	let monumentos = datos.monumentos
-						return res.send({fulfillmentText: monumentos})
-	let restaurantes = datos.restaurantes
-
-	function elegirNSitios(tipo, nSitios) {
-		try{
-			let total = []
-			let random = 0
-			let array = []
-
-			if(tipo == "monumentos")
-				array = monumentos
-			else
-				array = restaurantes
-
-			if(nSitios > array.length)
-				nSitios = array.length
-
-			for (let i=0; i < nSitios; i++) {
-				random = Math.floor(Math.random() * array.length)
-				total.push(array[random])
-				array.splice(random, 1)
-			}
-			return total
-		}
-		catch (err) {
-			return res.send({fulfillmentText: "Ha habido algun error: " + err})
-		}
-	}
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
 try {
 	let query = req.body.queryResult.intent.displayName
 /******************************************************************************/
