@@ -50,7 +50,7 @@ module.exports = (req, res) => {
 let query = req.body.queryResult.intent.displayName
 
 switch (query) {
-	case consultaSiguienteSitio:
+	case "consultaSiguienteSitio":
 		try {
 			let nSitios = parseInt(sitios)
 			let total = elegirNSitios(tipo, nSitios)
