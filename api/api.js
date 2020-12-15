@@ -47,38 +47,41 @@ module.exports = (req, res) => {
 /******************************************************************************/
 /******************************************************************************/
 /******************************************************************************/
-let query = req.body.queryResult.intent.displayName
+try {
+	let query = req.body.queryResult.intent.displayName
 
-switch (query) {
-	case "consultaSiguienteSitio":
-		try {
-			let nSitios = parseInt(sitios)
-			let total = elegirNSitios(tipo, nSitios)
+	switch (query) {
+		case "consultaSiguienteSitio":
+			try {
+				let nSitios = parseInt(sitios)
+				let total = elegirNSitios(tipo, nSitios)
 
-			let cad = "El siguiente sitio a visitar de la ruta es: " + total[0]
+				let cad = "El siguiente sitio a visitar de la ruta es: " + total[0]
 
-			return res.send({fulfillmentText: cad})
+				return res.send({fulfillmentText: cad})
+			}
+			catch (err) {
+				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+			}
+		break;
+
+		default:
+			try {
+				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
+				let nSitios = parseInt(sitios)
+				let total = elegirNSitios(tipo, nSitios)
+
+				let cad = "La ruta creada es: \n"
+				total.forEach((elemento) => cad += elemento + ", ")
+
+				return res.send({fulfillmentText: cad})
+			}
+			catch (err) {
+				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+			}
 		}
-		catch (err) {
-			return res.send({fulfillmentText: "Ha habido algun error: " + err})
-		}
-	break;
-
-	default:
-		try {
-			let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
-			let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
-			let nSitios = parseInt(sitios)
-			let total = elegirNSitios(tipo, nSitios)
-
-			let cad = "La ruta creada es: \n"
-			total.forEach((elemento) => cad += elemento + ", ")
-
-			return res.send({fulfillmentText: cad})
-		}
-		catch (err) {
-			return res.send({fulfillmentText: "Ha habido algun error: " + err})
-		}
-}
-
+	}
+	catch (err)
+		return res.send({fulfillmentText: "Ha habido algun error: " + err})
 }
