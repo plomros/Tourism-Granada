@@ -1,0 +1,30 @@
+
+{
+	"monumentos": [
+		{
+			"Alhambra",
+			"Palacio CarlosV",
+			"Catedral",
+			"Mirador San Nicolas",
+			"Jardines Generalife",
+			"Fuente de las Granadas",
+			"Mirador San Miguel Alto",
+			"Paseo de Los tristes",
+			"Monasterio de San Jerónimo",
+			"Sacromonte",
+			"Capilla Real"
+		}
+	],
+	"restaurantes": [
+		{
+			"El peruano",
+			"Biggies",
+			"Aliatar",
+			"El poderio",
+			"Los Diamantes",
+			"La esquinita de Javi",
+			"El pescaito de Carmela",
+			"Palacio Los patos"
+		}
+	]
+}
