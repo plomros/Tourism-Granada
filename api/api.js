@@ -51,7 +51,6 @@ try {
 	let query = req.body.queryResult.intent.displayName
 
 	if(query == "consultaSiguienteSitio") {
-			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 				let nSitios = parseInt(sitios)
@@ -60,9 +59,6 @@ try {
 				let cad = "El siguiente sitio a visitar de la ruta es: "
 
 				return res.send({fulfillmentText: cad})
-			}
-			catch (err) {
-				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
 		}
 
