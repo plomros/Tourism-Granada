@@ -49,9 +49,10 @@ module.exports = (req, res) => {
 /******************************************************************************/
 try {
 	let query = req.body.queryResult.intent.displayName
+	return res.send({fulfillmentText: req.body.queryResult.intent.displayName})
+	
 
 	if(query == "consultaSiguienteSitio") {
-					return res.send({fulfillmentText: req.body.queryResult.intent.displayName})
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
