@@ -67,6 +67,26 @@ try {
 			}
 		break;
 
+		case "consultaLugaresVisitados":
+			try {
+				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
+				let nSitios = parseInt(sitios)
+				let total = elegirNSitios(tipo, nSitios)
+				let nSitiosVisitados = Math.floor(Math.random() * total.length)
+
+				let cad = "Por ahora se han visitado los lugares: \n"
+
+				for (let i=0; i < nSitiosVisitados; i++)
+					cad += elemento + ", ";
+
+				return res.send({fulfillmentText: cad})
+			}
+			catch (err) {
+				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+			}
+		break;
+
 		default:
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
