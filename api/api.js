@@ -49,26 +49,25 @@ module.exports = (req, res) => {
 /******************************************************************************/
 try {
 	let query = req.body.queryResult.intent.displayName
-	return res.send({fulfillmentText: req.body.queryResult.intent.displayName})
-	
 
-	if(query == "consultaSiguienteSitio") {
+	switch (query) {
+		case "consultaSiguienteSitio":
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
 				let nSitios = parseInt(sitios)
 				let total = elegirNSitios(tipo, nSitios)
 
-				let cad = "El siguiente sitio a visitar de la ruta es: "
+				let cad = "El siguiente sitio a visitar de la ruta es: " + total[0]
 
 				return res.send({fulfillmentText: cad})
 			}
 			catch (err) {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
-		}
+		break;
 
-		else {
+		default:
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
 				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
