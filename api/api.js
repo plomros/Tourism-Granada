@@ -6,24 +6,29 @@ module.exports = (req, res) => {
 	let restaurantes = datos.restaurantes
 
 	function elegirNSitios(tipo, nSitios) {
-		let total = []
-		let random = 0
-		let array = []
+		try{
+			let total = []
+			let random = 0
+			let array = []
 
-		if(tipo == "monumentos")
-			array = monumentos
-		else
-			array = restaurantes
+			if(tipo == "monumentos")
+				array = monumentos
+			else
+				array = restaurantes
 
-		if(nSitios > array.length)
-			nSitios = array.length
+			if(nSitios > array.length)
+				nSitios = array.length
 
-		for (let i=0; i < nSitios; i++) {
-			random = Math.floor(Math.random() * array.length)
-			total.push(array[random])
-			array.splice(random, 1)
+			for (let i=0; i < nSitios; i++) {
+				random = Math.floor(Math.random() * array.length)
+				total.push(array[random])
+				array.splice(random, 1)
+			}
+			return total
 		}
-		return total
+		catch (err) {
+			return res.send({fulfillmentText: "Ha habido algun error: " + err})
+		}
 	}
 /******************************************************************************/
 /******************************************************************************/
