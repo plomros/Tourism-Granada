@@ -145,15 +145,18 @@ try {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
 			break;
-
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
 			case "recomendacionLugarCercano":
 				try {
+									return res.send({fulfillmentText: monumentos})
 					let total = elegirNSitios("monumentos", Math.floor(Math.random() * monumentos.length))
 
 					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
 					+ total[0]
 
-					return res.send({fulfillmentText: cad})
+					return res.send({fulfillmentText: monumentos})
 				}
 				catch (err) {
 					return res.send({fulfillmentText: "Ha habido algun error: " + err})
