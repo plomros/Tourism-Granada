@@ -152,7 +152,6 @@ try {
 /******************************************************************************/
 			case "recomendacionLugarCercano":
 				try {
-									return res.send({fulfillmentText: monumentos})
 					let total = elegirNSitios("monumentos", Math.floor(Math.random() * monumentos.length))
 
 					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
