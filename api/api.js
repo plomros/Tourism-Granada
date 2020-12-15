@@ -53,11 +53,6 @@ try {
 	switch (query) {
 		case "consultaSiguienteSitio":
 			try {
-				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
-				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
-				let nSitios = parseInt(sitios)
-				let total = elegirNSitios(tipo, nSitios)
-
 				let cad = "El siguiente sitio a visitar de la ruta es: "
 
 				return res.send({fulfillmentText: cad})
