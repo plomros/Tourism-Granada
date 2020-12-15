@@ -49,7 +49,9 @@ module.exports = (req, res) => {
 /******************************************************************************/
 try {
 	let query = req.body.queryResult.intent.displayName
-
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
 	switch (query) {
 		case "consultaSiguienteSitio":
 			try {
@@ -66,7 +68,9 @@ try {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
 		break;
-
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
 		case "consultaLugaresVisitados":
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
@@ -78,7 +82,7 @@ try {
 				let cad = "Por ahora se han visitado los lugares: \n"
 
 				for (let i=0; i < nSitiosVisitados; i++) {
-					if(i+1 == nSitiosVisitados)
+					if(i+2 == nSitiosVisitados)
 						cad += total[i] + " y ";
 					else
 						cad += total[i] + ", ";
@@ -91,7 +95,9 @@ try {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
 		break;
-
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
 		case "consultaKilometrosPorRecorrer":
 			try {
 				let MARGEN = 20
@@ -107,32 +113,36 @@ try {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
 		break;
-
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
 		case "consultaLugaresPorVisitar":
-		try {
-			let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
-			let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
-			let nSitios = parseInt(sitios)
-			let total = elegirNSitios(tipo, nSitios)
-			let nSitiosVisitados = Math.floor(Math.random() * total.length)
+			try {
+				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
+				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
+				let nSitios = parseInt(sitios)
+				let total = elegirNSitios(tipo, nSitios)
+				let nSitiosVisitados = Math.floor(Math.random() * total.length)
 
-			let cad = "Quedan por visitar: \n"
+				let cad = "Quedan por visitar: \n"
 
-			for (let i=0; i < nSitiosVisitados; i++) {
-				if(i+1 == nSitiosVisitados)
-					cad += total[i] + " y ";
-				else
-					cad += total[i] + ", ";
+				for (let i=0; i < nSitiosVisitados; i++) {
+					if(i+2 == nSitiosVisitados)
+						cad += total[i] + " y ";
+					else
+						cad += total[i] + ", ";
 
+				}
+
+				return res.send({fulfillmentText: cad})
 			}
-
-			return res.send({fulfillmentText: cad})
-		}
-		catch (err) {
-			return res.send({fulfillmentText: "Ha habido algun error: " + err})
-		}
+			catch (err) {
+				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+			}
 		break;
-
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
 		default:
 			try {
 				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
