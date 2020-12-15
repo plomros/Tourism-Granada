@@ -1,28 +1,9 @@
 
 module.exports = (req, res) => {
 
-	let monumentos = ["Alhambra",
-	"Palacio CarlosV",
-	"Catedral",
-	"Mirador San Nicolas",
-	"Jardines Generalife",
-	"Fuente de las Granadas",
-	"Mirador San Miguel Alto",
-	"Paseo de Los tristes",
-	"Monasterio de San Jerónimo",
-	"Sacromonte",
-	"Capilla Real"]
-
-	let restaurantes = [
-		"El peruano",
-		"Biggies",
-		"Aliatar",
-		"El poderio",
-		"Los Diamantes",
-		"La esquinita de Javi",
-		"El pescaito de Carmela",
-		"Palacio Los patos"]
-
+	let datos = require("./data.json")
+	let monumentos = datos.monumentos
+	let restaurantes = datos.restaurantes
 
 	function elegirNSitios(tipo, nSitios) {
 		let total = []
