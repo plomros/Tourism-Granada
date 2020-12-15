@@ -78,7 +78,7 @@ try {
 				let cad = "Por ahora se han visitado los lugares: \n"
 
 				for (let i=0; i < nSitiosVisitados; i++)
-					cad += elemento + ", ";
+					cad += total[i] + ", ";
 
 				return res.send({fulfillmentText: cad})
 			}
