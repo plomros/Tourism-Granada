@@ -58,7 +58,7 @@ try {
 				let nSitios = parseInt(sitios)
 				let total = elegirNSitios(tipo, nSitios)
 
-				let cad = "El siguiente sitio a visitar de la ruta es: " + total[0]
+				let cad = "El siguiente sitio a visitar de la ruta es: "
 
 				return res.send({fulfillmentText: cad})
 			}
