@@ -162,10 +162,7 @@ try {
 
 			case "recomendacionLugarCercano":
 				try {
-					let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
-					let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
-					let nSitios = parseInt(sitios)
-					let total = elegirNSitios(tipo, nSitios)
+					let total = elegirNSitios("monumentos", Math.floor(Math.random() * monumentos.length))
 
 					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
 					+ total[0]
