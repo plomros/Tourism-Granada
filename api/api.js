@@ -3,6 +3,7 @@ const datos = require("./data.json")
 const monumentos = datos.monumentos
 const restaurantes = datos.restaurantes
 let ultimoLugarVisitado = ""
+let ruta = [];
 
 
 function elegirNSitios(tipo, nSitios) {
@@ -50,12 +51,8 @@ try {
 	switch (query) {
 		case "consultaSiguienteSitio":
 			try {
-				let sitios = req.body.queryResult.outputContexts[0].parameters.CantidadSitios
-				let tipo = req.body.queryResult.outputContexts[0].parameters.LugaresInteres
-				let nSitios = parseInt(sitios)
-				let total = elegirNSitios(tipo, nSitios)
 
-				let cad = "El siguiente sitio a visitar de la ruta es: " + total[0]
+				let cad = "El siguiente sitio a visitar de la ruta es: " + ruta[0]
 
 				return res.send({fulfillmentText: cad})
 			}
@@ -82,9 +79,6 @@ try {
 					else
 						cad += total[i] + ", ";
 				}
-
-				ultimoLugarVisitado = total[nSitiosVisitados-1]
-
 
 				return res.send({fulfillmentText: cad})
 			}
@@ -130,8 +124,6 @@ try {
 						cad += total[i] + ", ";
 				}
 
-				cad += " y el siguiente sitio es " + ultimoLugarVisitado
-
 				return res.send({fulfillmentText: cad})
 			}
 			catch (err) {
@@ -149,7 +141,10 @@ try {
 				let total = elegirNSitios(tipo, nSitios)
 
 				let cad = "La ruta creada es: \n"
-				total.forEach((elemento) => cad += elemento + ", ")
+				total.forEach((elemento) => {
+					cad += elemento + ", "
+					ruta.push(elemento)
+				})
 
 				return res.send({fulfillmentText: cad})
 			}
@@ -165,7 +160,7 @@ try {
 					let rand = generarEntero(1, monumentos.length);
 					let total = elegirNSitios("monumentos", rand)
 
-					let cad = "Según tu ubicación el lugar más cercano al que puedes ir es: "
+					let cad = "Segun tu ubicación el lugar más cercano al que puedes ir es: "
 					+ total[0]
 
 					return res.send({fulfillmentText: cad})
