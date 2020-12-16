@@ -199,7 +199,7 @@ try {
 				let tipoTicket = "Adulto"//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
 
 				(async () => {
-					const reg = new RegExp(tipoTicket)
+					const reg = new RegExp("Adulto")
 					let precio = 0;
 
 					entradas.getEntradas().then(entrad => {
