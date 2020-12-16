@@ -13,7 +13,7 @@ function elegirNSitios(tipo, nSitios) {
 		let array = []
 
 		if(tipo == "monumentos") {
-			if(nSitios > array.length)
+			if(nSitios > monumentos.length)
 				nSitios = monumentos.length
 
 			for (let i=0; i < nSitios; i++)
@@ -21,13 +21,12 @@ function elegirNSitios(tipo, nSitios) {
 		}
 
 		else {
-			if(nSitios > array.length)
+			if(nSitios > restaurantes.length)
 				nSitios = restaurantes.length
 
 			for (let i=0; i < nSitios; i++)
 				array.push(restaurantes[i])
 		}
-
 
 
 		for (let i=0; i < nSitios; i++) {
