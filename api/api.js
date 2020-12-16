@@ -1,5 +1,7 @@
 
 const datos = require("./data.json")
+const entradas = require("./alhambra.js")
+
 const monumentos = datos.monumentos
 const restaurantes = datos.restaurantes
 let ultimoLugarVisitado = ""
@@ -45,6 +47,17 @@ function elegirNSitios(tipo, nSitios) {
 function generarEntero(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
+
+
+async function getPrecio(tipo) {
+	const total = []
+
+	await getEntradas().then((precio) => {total.push(precio);})
+
+
+	return (total)
+}
+
 /******************************************************************************/
 /******************************************************************************/
 /******************************************************************************/
@@ -177,7 +190,32 @@ try {
 				catch (err) {
 					return res.send({fulfillmentText: "Ha habido algun error: " + err})
 				}
-				break;
+			break;
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+		case "comprarEntradas":
+			try {
+				let tipo = req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
+				async function entradas(tipo) {
+					const reg = new RegExp(tipo)
+					let precio = 0;
+
+					entradas.getPrecio(tipo).then(res => {
+						for(let i=0; i < res[0].length; i++) {
+							const t = reg.exec(res[0][i].tipo)
+							if(t != null) {
+								precio = res[0][i].precio
+								return res.send({fulfillmentText: "El precio para " tipo + " es de "+ precio + "€"})
+							}
+						}
+					});
+				}
+			}
+			catch (err) {
+				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+			}
+			break;
 		}
 	}
 	catch (err) {
