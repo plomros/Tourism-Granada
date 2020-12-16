@@ -194,7 +194,7 @@ try {
 /******************************************************************************/
 /******************************************************************************/
 /******************************************************************************/
-		case "comprarEntradas":
+		default:
 			try {
 				let tipo = "Adulto"//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
 
@@ -214,11 +214,9 @@ try {
 				})();
 
 				}
-			}
 			catch (err) {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
-			break;
 		}
 	}
 	catch (err) {
