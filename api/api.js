@@ -196,7 +196,7 @@ try {
 /******************************************************************************/
 		case "comprarEntradas":
 			try {
-				let tipoTicket = "Adulto"//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
+				//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
 
 				(async () => {
 					const reg = new RegExp("Adulto")
