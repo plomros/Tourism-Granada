@@ -194,9 +194,7 @@ try {
 /******************************************************************************/
 /******************************************************************************/
 /******************************************************************************/
-		default:
-		return res.send({fulfillmentText: "El precio para " + "Adulto" + " es de "+ "€"});
-		
+		case "comprarEntradas":
 			try {
 				let tipo = "Adulto"//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
 
