@@ -214,7 +214,7 @@ try {
 				})();
 			}
 			catch (err) {
-				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+				return res.send({fulfillmentText: "Error: " + err})
 			}
 		}
 	}
