@@ -1,8 +1,8 @@
 
 {
-	"fiebre": "consejo1",
-	"jaqueca": "consejo2",
-	"vértigo": "consejo3",
-	"dolor de barriga": "consejo4",
-	"dolor de tobillo": "consejo5"
+	"fiebre": "Ante la fiebre, lo esencial es mantenerse hidratado. Adicionalmente, medicamentos como Paracetamol o Ibuprofeno pueden ayudar, siempre y cuando sean prescritos por un médico. por tanto, lo mejor será que vayas a un médico lo más pronto posible a fin de que pueda localizar qué afección está produciendo esa fiebre y qué medicamentos debes tomar para barjarla.",
+	"jaqueca": "Para reducir el dolor de cabeza, si te encuentras en un lugar ruidoso, lo mejor será que lo abandones. La jaqueca suele producirse también por situaciones de estrés, así que tómate un descanso en algún lugar donde puedas sentarte y recuerda que no hay prisa por acabar la ruta. También puede ser recomendable que comas algo, pues los dolores de cabeza muchas veces son provocados por haber comido poco.",
+	"vértigo": "Si te sientes mareado o tienes vértigo, deberías sentarte en algún lugar tranquilo lo más pronto posible. Mantener una posición relajada durante un tiempo debería reducir el mareo y permitirte reincorporarte poco a poco para reanudar el paseo. Si los síntomas no cesan, en caso de que estés solo, es recomendable que contactes con alguien de confianza para que te recoja, pues caminar con mareo puede provocar caídas preligrosas.",
+	"dolor de barriga": "Si el dolor de barriga persiste después de ir al baño, puedes probar a sentarte y relajarte un poco. Si después de un rato el dolor no desaparece, es probable que el dolor se deba a que has ingerido comida en mal estado o a algún virus gástrico. Lo recomendable en este caso es que consultes con tu médico y dejes la ruta por hoy.",
+	"dolor de tobillo": "Si el dolor de tobillo no es intenso, es posible que no se haya producido lesión y el mero movimiento del mismo alivie el dolor. Si, por el contrario, el dolor es intenso o persiste, debes detener la marcha de inmediato y contactar con alguien que te lleve a una clínica para que puedan revisar la zona en busca de posibles lesiones."
 }
