@@ -198,7 +198,7 @@ try {
 			try {
 				(async () => {
 					let precio = 0;
-					let tipoTicket = "Carnet Joven"
+					let tipoTicket = req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
 
 
 					entradas.getEntradas().then(entrad => {
