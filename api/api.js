@@ -196,10 +196,10 @@ try {
 /******************************************************************************/
 		case "comprarEntradas":
 			try {
-				let tipoTicket = req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
-
 				(async () => {
 					let precio = 0;
+					let tipoTicket = req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
+					
 
 					entradas.getEntradas().then(entrad => {
 							for(let i=0; i < entrad.length; i++) {
