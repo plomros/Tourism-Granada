@@ -202,11 +202,11 @@ try {
 					const reg = new RegExp(tipoTicket)
 					let precio = 0;
 
-					entradas.getEntradas().then(res => {
-							for(let i=0; i < res.length; i++) {
-								const t = reg.exec(res[i].tipo)
+					entradas.getEntradas().then(entrad => {
+							for(let i=0; i < entrad.length; i++) {
+								const t = reg.exec(entrad[i].tipo)
 								if(t != null) {
-									precio = res[i].precio
+									precio = entrad[i].precio
 									return res.send({fulfillmentText: "El precio para " + "Adulto" + " es de "+ precio + "€"});
 								}
 							}
