@@ -198,14 +198,14 @@ try {
 			try {
 				(async () => {
 					let precio = 0;
-					let tipoTicket = req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
-					
+					let tipoTicket = "Carnet Joven"
+
 
 					entradas.getEntradas().then(entrad => {
 							for(let i=0; i < entrad.length; i++) {
-								if(tipoTicket != null) {
+								if(tipoTicket == entrad[i].tipo) {
 									precio = entrad[i].precio
-									return res.send({fulfillmentText: "El precio para " + "Adulto" + " es de "+ precio + "€"});
+									console.log( "El precio para " + tipoTicket + " es de " + precio + "€");
 								}
 							}
 					});
