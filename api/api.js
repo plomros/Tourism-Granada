@@ -195,8 +195,9 @@ try {
 /******************************************************************************/
 /******************************************************************************/
 		default:
+		return res.send({fulfillmentText: "El precio para " + "Adulto" + " es de "+ "€"});
+		
 			try {
-			return res.send({fulfillmentText: "El precio para " + "Adulto" + " es de "+ "€"});
 				let tipo = "Adulto"//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
 
 				(async () => {
@@ -204,17 +205,16 @@ try {
 					let precio = 0;
 
 					entradas.getEntradas(tipo).then(res => {
-						for(let i=0; i < res.length; i++) {
-							const t = reg.exec(res[i].tipo)
-							if(t != null) {
-								precio = res[i].precio
-								return res.send({fulfillmentText: "El precio para " + "Adulto" + " es de "+ precio + "€"});
+							for(let i=0; i < res.length; i++) {
+								const t = reg.exec(res[i].tipo)
+								if(t != null) {
+									precio = res[i].precio
+									return res.send({fulfillmentText: "El precio para " + "Adulto" + " es de "+ precio + "€"});
+								}
 							}
-						}
 					});
 				})();
-
-				}
+			}
 			catch (err) {
 				return res.send({fulfillmentText: "Ha habido algun error: " + err})
 			}
