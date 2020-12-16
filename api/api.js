@@ -196,6 +196,7 @@ try {
 /******************************************************************************/
 		default:
 			try {
+			return res.send({fulfillmentText: "El precio para " + "Adulto" + " es de "+ "€"});
 				let tipo = "Adulto"//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
 
 				(async () => {
