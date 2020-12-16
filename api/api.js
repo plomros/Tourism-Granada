@@ -196,10 +196,10 @@ try {
 /******************************************************************************/
 		case "comprarEntradas":
 			try {
-				let tipo = "Adulto"//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
+				let tipoTicket = "Adulto"//req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
 
 				(async () => {
-					const reg = new RegExp(tipo)
+					const reg = new RegExp(tipoTicket)
 					let precio = 0;
 
 					entradas.getEntradas().then(res => {
