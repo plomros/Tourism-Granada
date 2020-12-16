@@ -202,7 +202,7 @@ try {
 					const reg = new RegExp(tipo)
 					let precio = 0;
 
-					entradas.getEntradas(tipo).then(res => {
+					entradas.getEntradas().then(res => {
 							for(let i=0; i < res.length; i++) {
 								const t = reg.exec(res[i].tipo)
 								if(t != null) {
