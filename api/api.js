@@ -1,5 +1,6 @@
 
 const datos = require("./data.json")
+const datosSintomas = require("./sintomas.json")
 const entradas = require("./alhambra.js")
 
 const monumentos = datos.monumentos
@@ -214,6 +215,31 @@ try {
 			catch (err) {
 				return res.send({fulfillmentText: "Error: " + err})
 			}
+			break;
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+			case "respuestaAfirmativaConsejoSintomasSinRutaActiva":
+				try {
+					let sintoma = req.body.queryResult.outputContexts[0].parameters.sintomas
+					let enfermedad = []
+
+					for (let i in datosSintomas)
+						enfermedad.push([i, datosSintomas[i]])
+
+					for(let i=0; i < enfermedad.length; i++) {
+						if(enfermedad[i][0] == sintoma)
+							return res.send({fulfillmentText: "Consejo: " + enfermedad[i][1]})
+					}
+
+				}
+				catch (err) {
+					return res.send({fulfillmentText: "Error: " + err})
+				}
+				break;
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
 		}
 	}
 	catch (err) {
