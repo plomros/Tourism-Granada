@@ -203,7 +203,7 @@ try {
 
 					entradas.getEntradas().then(entrad => {
 							for(let i=0; i < entrad.length; i++) {
-								if(entrad[i].tipotipoTicket == tipoTicket) {
+								if(entrad[i].tipo == tipoTicket) {
 									precio = entrad[i].precio
 									return res.send({fulfillmentText: "El precio para " + tipoTicket + " es de " + precio + "€"});
 								}
