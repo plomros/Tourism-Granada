@@ -63,7 +63,10 @@ async function getPrecio(tipo) {
 /******************************************************************************/
 
 module.exports = (req, res) => {
-return res.send({fulfillmentText: "Hola " })
+	try{
+return res.send({fulfillmentText: "Hola " })}catch (err) {
+				return res.send({fulfillmentText: "Ha habido algun error: " + err})
+			}
 // try {
 // 	let query = req.body.queryResult.intent.displayName
 // /******************************************************************************/
