@@ -2,13 +2,20 @@
 const datos = require("./data.json")
 const datosSintomas = require("./sintomas.json")
 const entradas = require("./alhambra.js")
-
+/******************************************************************************/
+/***********************Variables globales*************************************/
+/******************************************************************************/
 const monumentos = datos.monumentos
 const restaurantes = datos.restaurantes
 let ultimoLugarVisitado = ""
 let ruta = [];
+/******************************************************************************/
+/********************Funciones*************************************************/
+/******************************************************************************/
 
 
+/******************** Elige "nSitios" sitios del tipo "tipo" de datos**********/
+/************************** obtenidos de los json******************************/
 function elegirNSitios(tipo, nSitios) {
 	try{
 		let total = []
@@ -48,23 +55,26 @@ function elegirNSitios(tipo, nSitios) {
 function generarEntero(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
-
-
+/******************************************************************************/
+/*Llama a funcion que devuelve el precio de las entrdas de la Alhambra*********/
+/***************y espera el resultado mediante await para evitar responder*****/
+/**********************antes de obtener los datos******************************/
+/******************************************************************************/
 async function getPrecio(tipo) {
 	const total = []
 
 	await getEntradas().then((precio) => {total.push(precio);})
 
-
 	return (total)
 }
-
 /******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
+/****************Se obtienen los datos de DialogFlow en formato JSON***********/
+/**************************** y se exporta la respuesta************************/
 module.exports = (req, res) => {
 	try {
 		let query = req.body.queryResult.intent.displayName
+		// Devuelve el nombre del intent y dependiendo del mismo se realiza
+		//una u otra accion
 /******************************************************************************/
 /******************************************************************************/
 /******************************************************************************/
@@ -107,9 +117,9 @@ module.exports = (req, res) => {
 
 					for (let i=0; i < nSitiosVisitados; i++) {
 						if(i+2 == nSitiosVisitados)
-							cad += total[i] + " y ";
+							cad += total[i] + " y ";						// Para unir el penultimo y
 						else
-							cad += total[i] + ", ";
+							cad += total[i] + ", ";							// ultimo sitio con una "y"
 					}
 
 					return res.send({fulfillmentText: cad})
