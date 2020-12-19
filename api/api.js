@@ -74,6 +74,13 @@ module.exports = (req, res) => {
 
 					let cad = "El siguiente sitio a visitar de la ruta es: " + ruta[0]
 
+					let dia = new Date();
+					let horaActual = (dia.getUTCHours() + 1);
+
+					if(horaActual > 13 && horaActual < 19)
+						cad += "\n\n Según tu ubicación son las " + horaActual
+						+ ", ¿Quieres hacer un descanso para comer? "
+
 					return res.send({fulfillmentText: cad})
 				}
 				catch (err) {
