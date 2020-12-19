@@ -217,20 +217,29 @@ module.exports = (req, res) => {
 /******************************************************************************/
 			case "comprarEntradas":
 				try {
-					(async () => {
-						let precio = 0;
-						let tipoTicket = req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
+					let precio = 0;
+					let tipoTicket = req.body.queryResult.outputContexts[0].parameters.TipoCiudadano
+					let monumento = req.body.queryResult.queryText
 
-						entradas.getEntradas().then(entrad => {
-								for(let i=0; i < entrad.length; i++) {
-									if(entrad[i].tipo == tipoTicket) {
-										precio = entrad[i].precio
-										return res.send({fulfillmentText: "El precio para "
-										+ tipoTicket + " es de " + precio + "€"});
+					if(monumento == "Alhambra") {
+						(async () => {
+							entradas.getEntradas().then(entrad => {
+									for(let i=0; i < entrad.length; i++) {
+										if(entrad[i].tipo == tipoTicket) {
+											precio = entrad[i].precio
+											return res.send({fulfillmentText: "El precio para "
+											+ tipoTicket + " es de " + precio + "€"});
+										}
 									}
-								}
-						});
-					})();
+							});
+						})();
+					}
+
+					else {
+						return res.send({fulfillmentText: "El precio para "
+						+ monumento + " es de " + generarEntero(0, 20) + "€"});
+					}
+
 				}
 				catch (err) {
 					return res.send({fulfillmentText: "Error: " + err})
